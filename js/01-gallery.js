@@ -44,6 +44,8 @@ function handlerGallery(event) {
   
 
 }
+  
+
 
 
 function handlerKey(event) {
