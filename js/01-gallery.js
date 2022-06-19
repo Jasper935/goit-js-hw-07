@@ -38,7 +38,7 @@ function handlerGallery(event) {
         <img src="${event.target.dataset.source}" />
       `)
         instance.show()
-        window.addEventListener('keydown', handlerKey)
+        // window.addEventListener('keydown', handlerKey)   
 
     }
   
@@ -47,12 +47,21 @@ function handlerGallery(event) {
   
 
 
+// {
+	
+// 	onShow =>  {
+    
+//   },
+	
+// 	onClose =>{ window.removeEventListener('keydown', handlerKey)}
+// }
 
-function handlerKey(event) {
-    if (event.key === 'Escape') {
-        instance.close()
-    }
-    window.removeEventListener('keydown', handlerKey)
 
-}
+// function handlerKey(event) {
+//     if (event.key === 'Escape') {
+//         instance.close()
+//     }
+    
+
+// }
 
