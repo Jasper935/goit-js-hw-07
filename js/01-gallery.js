@@ -10,7 +10,7 @@ import { galleryItems } from './gallery-items.js';
 const gallery = document.querySelector('.gallery')
 
 const res = galleryItems.reduce((acc, el) =>
-    acc += `<div class="gallery__item">
+  acc += `<div class="gallery__item">
 <a class="gallery__link" href="${el.original}">
   <img
     class="gallery__image"
@@ -20,7 +20,7 @@ const res = galleryItems.reduce((acc, el) =>
   />
 </a>
 </div>`
-    , '')
+  , '')
 
 gallery.insertAdjacentHTML('afterbegin', res)
 
@@ -30,38 +30,41 @@ gallery.addEventListener('click', handlerGallery)
 let instance;
 
 function handlerGallery(event) {
-    event.preventDefault()
+  event.preventDefault()
 
-    if (event.target.className !== 'gallery') {
+  if (event.target.className !== 'gallery') {
 
-        instance = basicLightbox.create(`
+    instance = basicLightbox.create(`
         <img src="${event.target.dataset.source}" />
       `)
-        instance.show()
-        // window.addEventListener('keydown', handlerKey)   
+    instance.show()
 
-    }
-  
+
+  }
+
 
 }
-  
+
+function handlerKey(event) {
+  if (event.key === 'Escape') {
+    instance.close()
+  }
 
 
-// {
-	
-// 	onShow =>  {
-    
-//   },
-	
-// 	onClose =>{ window.removeEventListener('keydown', handlerKey)}
-// }
+}
+
+{
+
+  onShow => {
+    window.addEventListener('keydown', handlerKey)
+  }
+  ,
+
+  onClose =>{
+      window.removeEventListener('keydown', handlerKey) 
+}   
+}
 
 
-// function handlerKey(event) {
-//     if (event.key === 'Escape') {
-//         instance.close()
-//     }
-    
 
-// }
 
